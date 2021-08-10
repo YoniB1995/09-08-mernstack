@@ -3,10 +3,6 @@ const studentValidation =require('../validation/studentValidation')
 
 
 const getAllStudents = async (req,res) => {
-   const {errors,isValid} = studentValidation(req.body.student);
-   if(!isValid) {
-       return res.status(400).json(errors);
-   }
     try{
      await studentModel.find({},(err,result)=>{
         if (err) console.log(err);
@@ -32,7 +28,10 @@ const getStudentById = async (req,res) => {
 
 //good
 const createNewStudent = async (req,res) => {
-    // const {firstName,lastName,age,email} = req.body
+     const {errors,isValid} = studentValidation(req.body.student);
+   if(!isValid) {
+       return res.status(400).json(errors);
+   }
     try{
      await studentModel.insertMany(
     req.body.student
