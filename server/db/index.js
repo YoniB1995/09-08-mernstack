@@ -21,5 +21,8 @@ connectToDB().then(()=>
     console.error('Connection error',error.message)
 )
 
+const connect = db.db('test');
+db.createCollection('mongoCollection');
+
 const db = mongoose.connection;
 module.exports = db;
