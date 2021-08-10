@@ -23,7 +23,6 @@ connectToDB().then(()=>
 
 
 const db = mongoose.connection;
-const connect = db.db('test');
-db.createCollection('mongoCollection');
+
 
 module.exports = db;
