@@ -10,7 +10,11 @@ const UserSchema = new Schema({
         type:String,
         required:true
     },
-    age:{
+    date:{
+        type:Date,
+        default:Date.now
+    },
+    password:{
         type:String,
         required:true
     },
