@@ -30,7 +30,8 @@ const getStudentById = async (req,res) => {
 const createNewStudent = async (req,res) => {
      const {errors,isValid} = studentValidation(req.body.student);
    if(!isValid) {
-       return res.status(400).json(errors);
+       return res.send("error")
+       //res.status(400).json(errors);
    }
     try{
      await studentModel.insertMany(
