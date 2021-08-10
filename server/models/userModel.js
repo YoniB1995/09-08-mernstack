@@ -1,5 +1,5 @@
 const Schema = require('mongoose').Schema;
-
+const mongoose = require('mongoose')
 
 const UserSchema = new Schema({
     firstName:{
