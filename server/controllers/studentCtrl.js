@@ -1,6 +1,12 @@
 const studentModel = require('../models/studentModel')
+const studentValidation =require('../validation/studentValidation')
+
 
 const getAllStudents = async (req,res) => {
+   const {errors,isValid} = studentValidation(req.body.student);
+   if(!isValid) {
+       return res.status(400).json(errors);
+   }
     try{
      await studentModel.find({},(err,result)=>{
         if (err) console.log(err);

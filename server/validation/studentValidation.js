@@ -1,14 +1,14 @@
 const Validator = require('validator');
 const isEmpty = require('is-empty');
 
+
 module.exports = function validateStudentData(data){
     let errors = {};
     //convert empty field to an empty string so we can use validator function
     data.firstName = isEmpty(data.firstName) ? " ":data.firstName ;
     data.lastName = isEmpty(data.lastName) ? " ":data.lastName ;
-    data.age = isEmpty(data.age) ? " ":data.age ;
+    data.age = isEmpty(data.age) ? 0:data.age ;
     data.email = isEmpty(data.email) ? " ":data.email ;
-    data.date = isEmpty(data.date) ? " ":data.date ;
 
     //firstName checks
     if(Validator.isEmpty(data.firstName)){
@@ -23,9 +23,7 @@ module.exports = function validateStudentData(data){
     if(Validator.isEmail(data.email)){
         errors.firstName = "email field is required";
     }
-    if(Validator.isEmpty(data.date)){
-        errors.firstName = "date field is required";
-    }
+   
   
     return{
         errors,
