@@ -3,20 +3,20 @@ const UserModel = require('../models/userModel')
 
 
  const registerUser = async  (req,res)=>{
-     await UserModel.findOne({email:req.body.student.email},(err,student) => {
+     await UserModel.findOne({email:req.body.user.email},(err,student) => {
          if (student) {
              return res.status(400).json({email:"Email already exists"});
          }
          else {
              bcrypt.genSalt(10, (err, salt)=> {
-                 bcrypt.hash(req.body.student.password , salt , (err,has) => {
+                 bcrypt.hash(req.body.user.password , salt , (err,has) => {
                      if (err) throw err;
-                     req.body.student.password = hash;
-                     studentModel.insertMany(req.body.student, (err)=> {
+                     req.body.user.password = hash;
+                     studentModel.insertMany(req.body.user, (err)=> {
                          if(err) {
                              return res.status(400).json({success :false, error: err})
                          };
-                         res.status(201).json({success:true,message: `registered of user`})
+                         res.status(201).json({success:true,message: `registered of ${req.body.user.email}`})
                      })
                  })
              })
