@@ -2,5 +2,5 @@ const dotenv = require('dotenv').config();
 
 module.exports = {
     mongoURI: process.env.CONNECTION_URL ,
-    secretOrKey: "secret"
+    secretOrKey: process.env.KEY
   };
